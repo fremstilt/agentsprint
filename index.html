@@ -10,23 +10,20 @@
 
   <style>
     :root {
-      --bg:       #080808;
-      --surface:  #111111;
-      --surface2: #181818;
-      --border:   #252525;
-      --text:     #EDE8DF;
-      --muted:    #7A7570;
-      --orange:   #E05520;
+      --bg:        #080808;
+      --surface:   #111111;
+      --surface2:  #181818;
+      --border:    #252525;
+      --text:      #EDE8DF;
+      --muted:     #7A7570;
+      --orange:    #E05520;
       --orange-dim:#6B2710;
-      --blue:     #7AAEF0;
-      --blue-dim: #162640;
-      --green:    #4EC99A;
-      --green-dim:#0C3325;
-      --tag-bg:   #1D1D1D;
+      --blue:      #7AAEF0;
+      --blue-dim:  #162640;
+      --tag-bg:    #1D1D1D;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { font-size: 16px; }
 
     body {
@@ -38,10 +35,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .wrapper {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    .wrapper { max-width: 760px; margin: 0 auto; }
 
     /* ── HEADER ─────────────────────────── */
 
@@ -60,11 +54,7 @@
       margin-bottom: 20px;
     }
 
-    .tag-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .tag {
       font-family: 'JetBrains Mono', monospace;
@@ -78,16 +68,11 @@
       border-radius: 3px;
     }
 
-    .tag.orange {
-      color: var(--orange);
-      border-color: var(--orange-dim);
-      background: #1A0D08;
-    }
+    .tag.orange { color: var(--orange); border-color: var(--orange-dim); background: #1A0D08; }
 
     .time-badge {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
-      letter-spacing: 0.05em;
       color: var(--muted);
       white-space: nowrap;
     }
@@ -102,13 +87,10 @@
       margin-bottom: 12px;
     }
 
-    .header-title span {
-      color: var(--orange);
-    }
+    .header-title span { color: var(--orange); }
 
     .header-sub {
       font-size: 1.05rem;
-      font-weight: 400;
       color: var(--muted);
       max-width: 540px;
       font-style: italic;
@@ -119,22 +101,20 @@
     .intro {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    @media (max-width: 540px) {
-      .intro { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 540px) { .intro { grid-template-columns: 1fr; } }
 
     .intro-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 22px 24px;
+      padding: 20px 22px;
     }
 
-    .intro-card .card-label {
+    .card-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
       text-transform: uppercase;
@@ -143,74 +123,94 @@
       margin-bottom: 10px;
     }
 
-    .intro-card p {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.65;
+    .intro-card p { font-size: 0.95rem; color: var(--text); line-height: 1.65; }
+    .intro-card p strong { color: var(--orange); font-weight: 600; }
+
+    /* ── TOOL EXPLAINER ─────────────────── */
+
+    .tool-explainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 40px;
     }
 
-    .intro-card p strong {
-      color: var(--orange);
-      font-weight: 600;
+    @media (max-width: 540px) { .tool-explainer { grid-template-columns: 1fr; } }
+
+    .tool-explainer-label {
+      grid-column: 1 / -1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      padding: 12px 20px 10px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tool-item { background: var(--surface); padding: 16px 20px; }
+    .tool-item:first-of-type { border-right: 1px solid var(--border); }
+
+    @media (max-width: 540px) {
+      .tool-item:first-of-type { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    .tool-item .tool-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      margin-bottom: 4px;
+    }
+
+    .tool-item.t-chat .tool-name { color: var(--blue); }
+    .tool-item.t-code .tool-name { color: var(--orange); }
+    .tool-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── SECTION LABEL ──────────────────── */
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
 
     /* ── SETUP ──────────────────────────── */
 
-    .setup {
-      margin-bottom: 48px;
-    }
+    .setup { margin-bottom: 48px; }
 
-    .setup-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .setup-step {
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
-      overflow: hidden;
+      padding: 18px 22px;
+      margin-bottom: 16px;
     }
 
-    @media (max-width: 580px) {
-      .setup-grid { grid-template-columns: 1fr; }
-    }
-
-    .setup-item {
-      padding: 20px 22px;
-      border-right: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .setup-item:last-child {
-      border-right: none;
-    }
-
-    @media (max-width: 580px) {
-      .setup-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .setup-item:last-child { border-bottom: none; }
-    }
-
-    .setup-item .step-num {
+    .setup-step .step-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .setup-item .step-title {
+    .setup-step .step-title {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .setup-item p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .setup-step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
-    .setup-item p code {
+    .setup-step p code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       background: var(--surface2);
@@ -220,26 +220,67 @@
       color: var(--orange);
     }
 
-    .setup-item.highlight {
-      background: #0F0D0B;
-      border-left: 2px solid var(--orange);
+    /* ── ANATOMY ────────────────────────── */
+
+    .anatomy {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 48px;
     }
+
+    .anatomy-header {
+      background: var(--surface2);
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 540px) { .anatomy-grid { grid-template-columns: 1fr; } }
+
+    .anatomy-item {
+      padding: 16px 20px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .anatomy-item:nth-child(2n) { border-right: none; }
+    .anatomy-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    @media (max-width: 540px) {
+      .anatomy-item { border-right: none; }
+      .anatomy-item:last-child { border-bottom: none; }
+      .anatomy-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+
+    .anatomy-item .file-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--orange);
+      margin-bottom: 5px;
+    }
+
+    .anatomy-item .file-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .anatomy-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
 
     /* ── MISSIONS ───────────────────────── */
-
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
 
     .missions {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       margin-bottom: 48px;
     }
 
@@ -248,17 +289,15 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       overflow: hidden;
-      transition: border-color 0.2s;
     }
 
-    .mission:hover {
-      border-color: #333;
-    }
+    .mission.m1 { border-left: 3px solid var(--orange); }
+    .mission.m2 { border-left: 3px solid var(--blue); }
 
     .mission-header {
       display: flex;
       align-items: baseline;
-      gap: 16px;
+      gap: 14px;
       padding: 20px 24px 0;
     }
 
@@ -271,27 +310,105 @@
       flex-shrink: 0;
     }
 
+    .mission.m2 .mission-num { color: var(--blue); }
+
     .mission-title {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       font-size: 1.15rem;
-      letter-spacing: 0.01em;
       color: var(--text);
     }
 
-    .mission-body {
-      padding: 14px 24px 22px;
-    }
+    .mission-body { padding: 14px 24px 22px; }
 
-    .mission-body p {
+    .mission-body > p {
       font-size: 0.95rem;
       color: #C0BAB2;
       line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* Template block */
+    .prompt-template {
+      background: #0C0C0C;
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--orange);
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.75;
+      color: #B0AAA2;
+    }
+
+    .prompt-template .fill {
+      color: var(--orange);
+      background: #1A0D08;
+      border: 1px solid var(--orange-dim);
+      border-radius: 3px;
+      padding: 0 5px;
+    }
+
+    .template-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* Numbered steps */
+    .mission-steps {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
       margin-bottom: 14px;
     }
 
-    .mission-body p:last-child {
-      margin-bottom: 0;
+    .mission-steps li {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mission-steps li:last-child { border-bottom: none; }
+
+    .step-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      border-right: 1px solid var(--border);
+    }
+
+    .mission.m1 .step-n { color: var(--orange); }
+    .mission.m2 .step-n { color: var(--blue); }
+
+    .step-text {
+      font-size: 0.875rem;
+      color: #C0BAB2;
+      line-height: 1.6;
+      padding: 11px 16px;
+    }
+
+    .step-text strong { color: var(--text); font-weight: 500; }
+
+    .step-text code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: var(--orange);
     }
 
     .mission-hint {
@@ -308,19 +425,7 @@
       margin-top: 4px;
     }
 
-    .mission-hint::before {
-      content: '→';
-      color: var(--muted);
-    }
-
-    .mission.m1 { border-left: 3px solid var(--orange); }
-    .mission.m2 { border-left: 3px solid var(--blue); }
-    .mission.m3 { border-left: 3px solid var(--green); }
-
-    .mission.m2 .mission-num { color: var(--blue); }
-    .mission.m3 .mission-num { color: var(--green); }
-    .mission.m2 .mission-hint { color: var(--blue); }
-    .mission.m3 .mission-hint { color: var(--green); }
+    .mission-hint::before { content: '→'; color: var(--muted); }
 
     /* ── BOTTOM GRID ────────────────────── */
 
@@ -331,9 +436,7 @@
       margin-bottom: 40px;
     }
 
-    @media (max-width: 600px) {
-      .bottom-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .bottom-grid { grid-template-columns: 1fr; } }
 
     .panel {
       background: var(--surface);
@@ -346,27 +449,15 @@
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       font-size: 0.85rem;
-      letter-spacing: 0.04em;
       color: var(--text);
       margin-bottom: 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
 
-    .kit-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .kit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
-    .kit-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-size: 0.875rem;
-      color: #B8B2AA;
-    }
+    .kit-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.875rem; color: #B8B2AA; }
 
     .kit-list li .kit-key {
       font-family: 'JetBrains Mono', monospace;
@@ -377,9 +468,7 @@
       padding-top: 2px;
     }
 
-    .kit-list li .kit-val {
-      line-height: 1.5;
-    }
+    .kit-list li .kit-val { line-height: 1.5; }
 
     .kit-list li .kit-val code {
       font-family: 'JetBrains Mono', monospace;
@@ -391,12 +480,7 @@
       color: var(--orange);
     }
 
-    .debrief-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .debrief-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     .debrief-list li {
       font-size: 0.9rem;
@@ -406,99 +490,7 @@
       line-height: 1.5;
     }
 
-    .debrief-list li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--muted);
-    }
-
-    /* ── SHARING ────────────────────────── */
-
-    .sharing {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .sharing-header {
-      background: var(--surface);
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .sharing-header .panel-title {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-      font-size: 0.9rem;
-    }
-
-    .sharing-options {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--border);
-    }
-
-    @media (max-width: 600px) {
-      .sharing-options { grid-template-columns: 1fr; }
-    }
-
-    .share-option {
-      padding: 20px 22px;
-      border-right: 1px solid var(--border);
-    }
-
-    .share-option:last-child {
-      border-right: none;
-    }
-
-    @media (max-width: 600px) {
-      .share-option { border-right: none; border-bottom: 1px solid var(--border); }
-      .share-option:last-child { border-bottom: none; }
-    }
-
-    .share-option .opt-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .share-option .opt-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .share-option p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .sharing-footer {
-      padding: 14px 22px;
-      background: #0D0D0D;
-    }
-
-    .sharing-footer p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .sharing-footer p strong {
-      color: #6B6560;
-      font-style: normal;
-    }
+    .debrief-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
 
     /* ── FOOTER ─────────────────────────── */
 
@@ -521,26 +513,13 @@
       text-transform: uppercase;
     }
 
-    /* ── PRINT ──────────────────────────── */
     @media print {
-      body {
-        background: #fff;
-        color: #111;
-        padding: 20mm 16mm;
-      }
+      body { background: #fff; color: #111; padding: 20mm 16mm; }
       :root {
-        --bg: #fff;
-        --surface: #F6F4F1;
-        --surface2: #EEEBE7;
-        --border: #DDDAD6;
-        --text: #111;
-        --muted: #888;
-        --orange: #C0440D;
-        --blue: #2A69C8;
-        --green: #1A8C62;
-        --tag-bg: #F0EDE9;
+        --bg: #fff; --surface: #F6F4F1; --surface2: #EEEBE7;
+        --border: #DDDAD6; --text: #111; --muted: #888;
+        --orange: #C0440D; --blue: #2A69C8; --tag-bg: #F0EDE9;
       }
-      .mission:hover { border-color: var(--border); }
     }
   </style>
 </head>
@@ -569,38 +548,71 @@
       </div>
       <div class="intro-card">
         <div class="card-label">Oppdraget ditt</div>
-        <p>Bygg en agent som henter <strong>to ferske nyhetsartikler</strong> om et tema du velger og sender dem til deg på e-post — klar i innboksen når du starter arbeidsdagen. Agenten skal aldri sende samme artikkel to ganger.</p>
+        <p>Bygg en agent som henter <strong>to ferske nyhetsartikler</strong> om et tema du velger og poster dem til deg på Slack — klar når du starter arbeidsdagen. Agenten skal aldri sende samme artikkel to ganger.</p>
       </div>
     </section>
 
+    <!-- TOOL EXPLAINER -->
+    <div class="tool-explainer">
+      <div class="tool-explainer-label">To verktøy — to roller</div>
+      <div class="tool-item t-chat">
+        <div class="tool-name">claude.ai (nettleser eller app)</div>
+        <p>Bruk denne til å tenke, forstå og diskutere. Sitter du fast eller vil du snakke gjennom noe — start her.</p>
+      </div>
+      <div class="tool-item t-code">
+        <div class="tool-name">Claude Code (Desktop-appen)</div>
+        <p>Bruk denne til å bygge, kjøre og automatisere. Claude Code lager filer og kjører agenten lokalt på maskinen din.</p>
+      </div>
+    </div>
+
     <!-- SETUP -->
     <div class="setup">
-      <div class="section-label">Før du begynner — sett opp arbeidsområdet</div>
-      <div class="setup-grid">
+      <div class="section-label">Før du begynner</div>
 
-        <div class="setup-item">
-          <div class="step-num">Steg 1</div>
-          <div class="step-title">Opprett en mappe</div>
-          <p>Lag en dedikert prosjektmappe på maskinen din — f.eks. <code>morgenbriefing</code>. Alt agenten lager lever her: script, historikk, logg.</p>
+      <div class="setup-step">
+        <div class="step-num">Steg 1</div>
+        <div class="step-title">Opprett arbeidsmappe og åpne i Claude Code</div>
+        <p>Lag en ny mappe på maskinen din — f.eks. <code>morgenbriefing</code>. Åpne Claude Code i Desktop-appen og si: <code>«Åpne mappen morgenbriefing som arbeidsområde.»</code> Alt agenten lager havner i denne mappen.</p>
+      </div>
+
+      <div class="setup-step">
+        <div class="step-num">Steg 2</div>
+        <div class="step-title">Legg til Slack som connector</div>
+        <p>I Claude Code Desktop: åpne <code>Customize</code> → <code>Connectors</code> → legg til Slack. Du blir bedt om å logge inn på Slack-arbeidsområdet ditt. Når Slack er koblet til, kan agenten poste meldinger på dine vegne.</p>
+      </div>
+
+      <!-- ANATOMY -->
+      <div class="anatomy">
+        <div class="anatomy-header">
+          <div class="card-label">Hva agenten består av</div>
         </div>
-
-        <div class="setup-item">
-          <div class="step-num">Steg 2</div>
-          <div class="step-title">Åpne i Claude Code</div>
-          <p>Start Claude Code i Desktop-appen og åpne mappen som arbeidsområde. Du jobber lokalt — filene dine, på maskinen din.</p>
+        <div class="anatomy-grid">
+          <div class="anatomy-item">
+            <div class="file-name">SKILL.md</div>
+            <div class="file-role">Instruksen din</div>
+            <p>Beskriver hva agenten skal gjøre, hvilken verdi den skal gi deg, og hvordan meldingen skal se ut. Du skriver denne i oppdrag 01.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="file-name">agent.py</div>
+            <div class="file-role">Selve agenten</div>
+            <p>Python-scriptet som henter artikler, sjekker hukommelsen og poster til Slack. Claude Code lager dette for deg.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="file-name">sett_artikler.json</div>
+            <div class="file-role">Hukommelsen</div>
+            <p>Holder styr på hvilke artikler som allerede er sendt. Agenten sjekker denne listen og sender aldri det samme to ganger.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="file-name">Slack connector</div>
+            <div class="file-role">Kanalen</div>
+            <p>En kobling til Slack-arbeidsområdet ditt, satt opp via Customize i Claude Code Desktop. Agenten bruker denne til å poste morgenmeldingen.</p>
+          </div>
         </div>
-
-        <div class="setup-item highlight">
-          <div class="step-num">Steg 3 — nøkkellæring</div>
-          <div class="step-title">Instruksen blir en SKILL.md</div>
-          <p>Planen du lager i oppdrag 01 lagres som <code>SKILL.md</code> i mappen. Det er et dokument Claude Code leser og handler etter — selve designarbeidet ditt.</p>
-        </div>
-
       </div>
     </div>
 
     <!-- MISSIONS -->
-    <div class="section-label">Tre oppdrag — ingen fasit</div>
+    <div class="section-label">To oppdrag — ingen fasit</div>
     <div class="missions">
 
       <div class="mission m1">
@@ -609,9 +621,30 @@
           <h2 class="mission-title">Legg en plan</h2>
         </div>
         <div class="mission-body">
-          <p>Oppdraget du nettopp har lest er utgangspunktet. Ta det med inn i Claude Code — men ikke be om kode ennå. Beskriv agenten som om du onboarder en ny kollega: hvem er den til, hva skal den levere, og hvilken verdi skal den gi deg? Tenk gjennom hvordan den perfekte morgenbriefingen ser ut: hva inneholder den, og hvordan er den skrevet?</p>
-          <p>Be Claude Code lage en plan basert på beskrivelsen din. Les planen, still spørsmål og juster til du er fornøyd. Gå ikke videre til oppdrag 02 før planen er på plass.</p>
-          <div class="mission-hint">Start med: «Hvilken verdi skal agenten gi meg?»</div>
+          <p>Beskriv agenten så tydelig at Claude Code kan bygge den — uten at du skriver en linje kode. Start med verdien du vil ha, ikke teknologien.</p>
+
+          <div class="template-label">Instruksjonsmal — fyll inn det som er markert</div>
+          <div class="prompt-template">
+            Jeg vil lage en morgenagent som:<br>
+            — Søker etter to ferske nyhetsartikler om <span class="fill">[TEMA]</span><br>
+            — Poster dem til meg på Slack hver morgen<br>
+            — Aldri sender det samme to ganger<br><br>
+            Verdien for meg er <span class="fill">[HVA DU VIL OPPNÅ]</span>.<br>
+            En god melding skal <span class="fill">[HVA SOM GJØR DEN NYTTIG FOR DEG]</span>.<br><br>
+            Lag en plan. Ikke skriv kode ennå.
+          </div>
+
+          <ol class="mission-steps">
+            <li>
+              <span class="step-n">1</span>
+              <span class="step-text"><strong>Fyll inn malen over</strong> og lim den inn i Claude Code. Observer hva Claude Code spør om tilbake, og svar så konkret du kan.</span>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <span class="step-text"><strong>Les planen Claude Code foreslår.</strong> Juster til du er fornøyd, og si deretter: <code>«Lagre planen som SKILL.md i arbeidsmappen.»</code> Dette dokumentet er utgangspunktet for oppdrag 02.</span>
+            </li>
+          </ol>
+          <div class="mission-hint">Usikker på noe? Spør i claude.ai-chatten</div>
         </div>
       </div>
 
@@ -621,8 +654,26 @@
           <h2 class="mission-title">Bygg og lever</h2>
         </div>
         <div class="mission-body">
-          <p>Du har en plan. Be Claude Code bygge agenten basert på den. Beskriv resultatet du vil ha — ikke steg for steg. Agenten skal huske artiklene den allerede har sendt og aldri levere det samme to ganger. Kjør den manuelt én gang for å se hva du faktisk får.</p>
-          <div class="mission-hint">Prøv å kjøre agenten manuelt én gang for å se resultatet</div>
+          <p>Du har en plan. Nå skal Claude Code bygge agenten basert på den. Følg med på hva som skjer — du trenger ikke forstå koden, men du bør forstå hvert steg.</p>
+          <ol class="mission-steps">
+            <li>
+              <span class="step-n">1</span>
+              <span class="step-text"><strong>Si til Claude Code:</strong> <code>«Bygg agenten basert på SKILL.md.»</code> Claude Code lager filene som trengs og stiller spørsmål underveis. Svar så godt du kan.</span>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <span class="step-text"><strong>Bekreft at Slack-connectoren er aktiv</strong> (satt opp i steg 2 over). Si til Claude Code: <code>«Bruk Slack-connectoren til å sende morgenbriefingen til kanalen #morgenbriefing.»</code> Claude Code bruker tilkoblingen du allerede har satt opp.</span>
+            </li>
+            <li>
+              <span class="step-n">3</span>
+              <span class="step-text"><strong>Test agenten manuelt.</strong> Si: <code>«Kjør agenten én gang nå.»</code> Sjekk Slack-kanalen. Ser meldingen slik du hadde tenkt? Juster og kjør på nytt til du er fornøyd.</span>
+            </li>
+            <li>
+              <span class="step-n">4</span>
+              <span class="step-text"><strong>Sett opp automatisk kjøring.</strong> I Desktop-appen: Code → Routines → New routine → Local. Sett klokkeslett til f.eks. <code>07:00</code>. Agenten sender automatisk når maskinen våkner — selv om det planlagte tidspunktet er passert.</span>
+            </li>
+          </ol>
+          <div class="mission-hint">Noe som ikke virker? Beskriv problemet til Claude Code</div>
         </div>
       </div>
 
@@ -636,23 +687,23 @@
         <ul class="kit-list">
           <li>
             <span class="kit-key">Verktøy</span>
-            <span class="kit-val">Claude desktop-appen med Claude Code innebygd</span>
-          </li>
-          <li>
-            <span class="kit-key">Minne</span>
-            <span class="kit-val">Agenten lagrer sette artikler i <code>sett_artikler.json</code></span>
-          </li>
-          <li>
-            <span class="kit-key">E-post</span>
-            <span class="kit-val">Gmail via SMTP — krever et App-passord fra Google-kontoen din (ikke vanlig passord)</span>
-          </li>
-          <li>
-            <span class="kit-key">Kjøring</span>
-            <span class="kit-val">Routines-fanen i Claude Code Desktop. Sett til f.eks. <code>07:00</code> — sender automatisk når maskinen våkner om morgenen, selv om tidspunktet er passert</span>
+            <span class="kit-val">Claude Desktop-appen med Claude Code innebygd</span>
           </li>
           <li>
             <span class="kit-key">Språk</span>
-            <span class="kit-val">Python — Claude Code håndterer alt, du trenger ikke kunne det</span>
+            <span class="kit-val">Python — Claude Code skriver og kjører det, du trenger ikke kunne det</span>
+          </li>
+          <li>
+            <span class="kit-key">Minne</span>
+            <span class="kit-val">Agenten lagrer sette artikler i <code>sett_artikler.json</code> — en lokal fil i mappen din</span>
+          </li>
+          <li>
+            <span class="kit-key">Utsending</span>
+            <span class="kit-val">Slack via connector — kobles til i Claude Code Desktop under Customize → Connectors</span>
+          </li>
+          <li>
+            <span class="kit-key">Kjøring</span>
+            <span class="kit-val">Routines i Claude Code Desktop — sender automatisk når maskinen våkner om morgenen</span>
           </li>
         </ul>
       </div>
@@ -673,7 +724,7 @@
     <!-- FOOTER -->
     <footer class="doc-footer">
       <span>Agentsprinten — Læringsoppdrag v1</span>
-      <span>Claude Code · Claude Desktop · Claude Pro</span>
+      <span>Claude Code · Claude Desktop · Slack</span>
     </footer>
 
   </div>
